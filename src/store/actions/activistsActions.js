@@ -1,7 +1,7 @@
 import ActivistsService from '../../services/ActivistsService';
 import {
   FETCH_ACTIVISTS,
-} from "./actionTypes"
+} from './actionTypes'
 
 const activistsService = new ActivistsService();
 

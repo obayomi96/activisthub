@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import  { 
   fetchActivists,
  } from '../../store/actions/activistsActions';
-import Header from "../../components/Layout/Header";
+import Header from '../../components/Layout/Header';
 
 const Activists = ({activists, fetchActivists}) => {
 
@@ -18,8 +18,8 @@ useEffect(() => {
 }, [activists])
 
   return (
-    <div>
-      <Header headerBgColor="#fff" textColor="#6A0000" />
+    <div className='activists-div'>
+      <Header headerBgColor='#fff' textColor='#6A0000' />
     </div>
   );
 };
