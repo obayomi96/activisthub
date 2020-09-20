@@ -58,6 +58,44 @@ body {
     }
   }
   .activists-section {
+    .fixed-header {
+      position: fixed;
+      width: 100%;
+      top: 300px;
+      bottom: 10px;
+      z-index: 2;
+      overflow-y: scroll;
+    }
+    .list-view-div {
+      margin-top: 35px;
+      width: 100%;
+      float: right;
+      background: red;
+      .list-table {
+        width: 80%;
+        thead {
+          margin-left: 30px;
+          color: #ddd;
+          font-size: 14px;
+          tr {
+            border-bottom: 1px solid #ddd;
+          }
+        }
+        td {
+          margin: 10px auto;
+          width: 100%;
+          font-size: 20px;
+          padding: 15px;
+        }
+        .tr {
+          height: 50px;
+          border-bottom: 1px solid #ddd;
+        }
+        img {
+          border-radius: 50%;
+        }
+      }
+    }
     margin-top: 35px;
     width: 95%;
     float: right;

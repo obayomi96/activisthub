@@ -98,22 +98,53 @@ const Activists = ({ activists, fetchActivists }) => {
         </div>
       </div>
       <div className='activists-section'>
-        <div className='fixed-header'></div>
-        <div className='inner-div'>
-          {
-            activistsList && activistsList.map((activist, index) => {
-              return (
-                <ActivistCard
-                  className='flex-item'
-                  key={index}
-                  avatarUrl={activist.imgUrl}
-                  name={activist.person}
-                  desc={activist.description}
-                  dob={activist.dateOfBirth}
-                  location={activist.placeOfBirth}
-                />
-              )
-            })
+        <div className='fixed-header'>
+          {listView ?
+          (
+          <div className='inner-div'>
+            {
+              activistsList && activistsList.map((activist, index) => {
+                return (
+                  <ActivistCard
+                    className='flex-item'
+                    key={index}
+                    avatarUrl={activist.imgUrl}
+                    name={activist.person}
+                    desc={activist.description}
+                    dob={activist.dateOfBirth}
+                    location={activist.placeOfBirth}
+                  />
+                )
+              })
+            }
+          </div>
+          ) :
+          (
+          <div className='list-view-div'>
+            <table className='list-table'>
+              <thead>
+                <tr className='fiex-table'>
+                  <th>Name</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              {
+                activistsList && activistsList.map((activist, index) => {
+                  return (
+                    <tbody key={index}>
+                      <tr className='tr'>
+                        <td className=''>
+                          <img width='64px' height='64px'  alt='avtr' src={activist.imgUrl} />
+                          {activist.person}</td>
+                        <td>{activist.description}</td>
+                      </tr>
+                    </tbody>
+                  )
+                })
+              }
+            </table>
+          </div>
+          )
           }
         </div>
       </div>
