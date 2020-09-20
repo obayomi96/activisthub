@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { Search, Grid, List } from "react-feather";
+import { Table } from "react-bootstrap";
 import { fetchActivists } from "../../store/actions/activistsActions";
 import Header from "../../components/Layout/Header";
 import Button from "../../components/Buttons";
@@ -83,69 +84,88 @@ const Activists = ({ activists, fetchActivists }) => {
           />
         </div>
       </div>
-      <div className='toggle-view-div'>
-        <div className='toggle-icons-div'>
+      <div className="toggle-view-div">
+        <div className="toggle-icons-div">
           {listView ? (
             <Grid
               onClick={handleView}
               size={30}
               // style={{ margin: '10px' }}
-              className='grid-icon v-icon'
+              className="grid-icon v-icon"
             />
           ) : (
-            <List onClick={handleView} size={30} className='list-icon v-icon' />
+            <List onClick={handleView} size={30} className="list-icon v-icon" />
           )}
         </div>
       </div>
-      <div className='activists-section'>
-        <div className='fixed-header'>
-          {listView ?
-          (
-          <div className='inner-div'>
-            {
-              activistsList && activistsList.map((activist, index) => {
-                return (
-                  <ActivistCard
-                    className='flex-item'
-                    key={index}
-                    avatarUrl={activist.imgUrl}
-                    name={activist.person}
-                    desc={activist.description}
-                    dob={activist.dateOfBirth}
-                    location={activist.placeOfBirth}
-                  />
-                )
-              })
-            }
-          </div>
-          ) :
-          (
-          <div className='list-view-div'>
-            <table className='list-table'>
-              <thead>
-                <tr className='fiex-table'>
-                  <th>Name</th>
-                  <th>Description</th>
-                </tr>
-              </thead>
-              {
-                activistsList && activistsList.map((activist, index) => {
+      <div className="activists-section">
+        <div className="">
+          {listView ? (
+            <div className="inner-div fixed-header">
+              {activistsList &&
+                activistsList.map((activist, index) => {
                   return (
-                    <tbody key={index}>
-                      <tr className='tr'>
-                        <td className=''>
-                          <img width='64px' height='64px'  alt='avtr' src={activist.imgUrl} />
-                          {activist.person}</td>
-                        <td>{activist.description}</td>
-                      </tr>
-                    </tbody>
-                  )
-                })
-              }
-            </table>
-          </div>
-          )
-          }
+                    <ActivistCard
+                      className="flex-item"
+                      key={index}
+                      avatarUrl={activist.imgUrl}
+                      name={activist.person}
+                      desc={activist.description}
+                      dob={activist.dateOfBirth}
+                      location={activist.placeOfBirth}
+                    />
+                  );
+                })}
+            </div>
+          ) : (
+            <div className="list-view-div">
+              <Table className="list-table">
+                <thead className="fixed-th">
+                  <tr
+                    className="fiex-table"
+                    style={{  display: "flex",
+                    alignItems: "center", width: '100%' }}
+                  >
+                    <th style={{ marginRight: "520px", float: "left", width: '50%' }}>Name</th>
+                    <th  style={{ width: "50%", float: "right" }}>
+                      Description
+                    </th>
+                  </tr>
+                </thead>
+                {activistsList &&
+                  activistsList.map((activist, index) => {
+                    return (
+                      <tbody key={index}>
+                        <tr className="tr">
+                          <td className="td">
+                            <div
+                              style={{
+                                width: "auto",
+                                display: "flex",
+                                alignItems: "center",
+                              }}
+                            >
+                              <div className='img-d'>
+                              <img
+                                className="img"
+                                width="64px"
+                                height="64px"
+                                alt="avtr"
+                                src={activist.imgUrl}
+                                />
+
+                              </div>
+                              {activist.person}
+                            </div>
+                          </td>
+                          <td className='right' >{activist.description}</td>
+                        </tr>
+                      </tbody>
+                    );
+                  })}
+              </Table>
+            </div>
+          )}
         </div>
       </div>
     </div>
