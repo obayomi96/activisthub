@@ -1,4 +1,76 @@
-.activists-div {
-  height: 100vh;
+body {
   background: #fbfbfb;
+}
+
+.activists-div {
+  position: relative;
+  height: 100%;
+  // background: #fbfbfb;
+  .section-one-div {
+    width: 100%;
+    margin: 40px auto 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .sec-one-left {
+      margin-left: 75px;
+      display: flex;
+      align-items: center;
+      .search-icon {
+        position: absolute;
+        left: 100px;
+        margin-right: 10px;
+        color: #b4b4b4;
+      }
+      .act {
+        padding: 5px;
+      }
+    }
+    .sec-one-right {
+      margin-right: 10px;
+    }
+  }
+  .toggle-view-div {
+    position: relative;
+    top: 25px;
+    width: 100%;
+    .toggle-icons-div {
+      margin-left: 85px;
+
+      .v-icon {
+        padding: 10px;
+        border-radius: 50%;
+        background: rgba(106, 0, 0, 0.12);
+        color: #6a0000;
+        transition: all 1.5s;
+        // opacity: 1;
+        animation-name: switch;
+        animation-duration: 1.5s;
+      }
+      @keyframes switch {
+        from {
+          opacity: 0.5;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+    }
+  }
+  .activists-section {
+    margin-top: 35px;
+    width: 95%;
+    float: right;
+    .inner-div {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      // padding-right: 5px;
+      .flex-item {
+        width: 100%;
+        flex: 1 1 auto;
+        // margin: 40px !important;
+      }
+    }
+  }
 }
