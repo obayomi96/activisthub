@@ -1,5 +1,5 @@
-import React from 'react';
-import { PropTypes } from 'prop-types';
+import React from "react";
+import { PropTypes } from "prop-types";
 
 const Input = ({
   handleChange,
@@ -10,12 +10,13 @@ const Input = ({
   id,
   style,
   label,
-  className
+  className,
 }) => {
   return (
-    <div>
-      <label>{label}</label>
+    <div style={{ display: "flex", flexDirection: "column", alignItems: 'flex-start' }}>
+      <label style={{color: '#A1A4B8'}}>{label}</label>
       <input
+        autoComplete="off"
         style={style}
         className={className}
         onChange={handleChange}
@@ -28,11 +29,11 @@ const Input = ({
       />
     </div>
   );
-}
+};
 
 Input.propTypes = {
   label: PropTypes.string,
-  handleClick: PropTypes.func,
+  handleChange: PropTypes.func,
   children: PropTypes.node,
   style: PropTypes.shape({
     height: PropTypes.string,
@@ -42,26 +43,22 @@ Input.propTypes = {
     borderRadius: PropTypes.string,
     outline: PropTypes.string,
   }),
-  value: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-  ]).isRequired,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   type: PropTypes.string,
   disabled: PropTypes.bool,
-  label: PropTypes.string,
   className: PropTypes.string,
   id: PropTypes.string,
 };
 
 Input.defaultProps = {
-  label: '',
+  // value: "",
+  label: "",
   children: null,
   style: null,
-  type: '',
+  type: "",
   disabled: false,
-  className: '',
-  id: '',
+  className: "",
+  id: "",
 };
 
 export default Input;
-

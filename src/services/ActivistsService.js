@@ -13,6 +13,18 @@ class ActivistsService {
     }
   }
 
+  addActivist = async (dataValues) => {
+    try {
+      const response = await http.post('/', dataValues)
+      console.log('res', response);
+      if (response.status === 201) {
+        return response.data
+      }
+    } catch (error) {
+      return error
+    }
+  }
+
 }
 
 export default ActivistsService

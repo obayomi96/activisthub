@@ -1,5 +1,6 @@
 import {
-  FETCH_ACTIVISTS
+  FETCH_ACTIVISTS,
+  CREATE_ACTIVIST
 } from '../actions/actionTypes'
 
 export const initialState = {
@@ -13,6 +14,11 @@ export const activistsReducer = (state = initialState, action) => {
       return {
         ...state,
         activists: action.payload,
+      }
+    case CREATE_ACTIVIST:
+      return {
+        ...state,
+        singleActivist: action.payload,
       }
     default:
       return state
