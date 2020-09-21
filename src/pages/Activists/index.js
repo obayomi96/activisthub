@@ -42,15 +42,6 @@ const Activists = ({ activists, fetchActivists, addActivist, singleActivist }) =
     loadData();
   }, [activists]);
 
-  useEffect(() => {
-    function loadData() {
-      if (singleActivist !== {}) {
-        setActivistsList([...activistsList, singleActivist]);
-      }
-    }
-    loadData();
-  }, [setActivistsList, singleActivist]);
-
   const confirmModalState = () => {
     setConfirmModal(false);
   }
@@ -350,7 +341,7 @@ const Activists = ({ activists, fetchActivists, addActivist, singleActivist }) =
       </div>
       <div className="toggle-view-div">
         <div className="toggle-icons-div">
-          {!listView ? (
+          {listView ? (
             <Grid onClick={handleView} size={30} className="grid-icon v-icon" />
           ) : (
             <List onClick={handleView} size={30} className="list-icon v-icon" />
@@ -359,7 +350,7 @@ const Activists = ({ activists, fetchActivists, addActivist, singleActivist }) =
       </div>
       <div className="activists-section">
         <div className="">
-          {listView ? (
+          {!listView ? (
             <div className="inner-div fixed-header">
               {activistsList &&
                 activistsList.map((activist, index) => {
