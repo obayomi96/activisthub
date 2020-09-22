@@ -33,8 +33,6 @@ const Activists = ({ activists, fetchActivists, addActivist, singleActivist }) =
 
   const selectFile = useRef();
 
-  // const checkStorage = PersistView.setViewState()
-
   useEffect(() => {
     if (PersistView.setViewState() === 'list') {
       localStorage.setItem('activist_view_state', 'list')
