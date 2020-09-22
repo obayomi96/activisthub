@@ -8,6 +8,7 @@ import {
   fetchActivists,
   addActivist,
 } from "../../store/actions/activistsActions";
+import PersistView from "../../utils/ActivistView";
 import Header from "../../components/Layout/Header";
 import Button from "../../components/Buttons";
 import Input from "../../components/Input";
@@ -31,6 +32,21 @@ const Activists = ({ activists, fetchActivists, addActivist, singleActivist }) =
   });
 
   const selectFile = useRef();
+
+  // const checkStorage = PersistView.setViewState()
+
+  useEffect(() => {
+    if (PersistView.setViewState() === 'list') {
+      console.log('list view')
+      // setListView(!listView)
+      localStorage.setItem('activist_view_state', 'list')
+    } else {
+      console.log('grid view')
+      // setListView(!listView)
+      localStorage.setItem('activist_view_state', 'grid')
+
+    }
+  }, [PersistView.setViewState()])
   
   useEffect(() => {
     async function loadData() {
@@ -51,7 +67,13 @@ const Activists = ({ activists, fetchActivists, addActivist, singleActivist }) =
   };
 
   const handleView = () => {
-    setListView(!listView);
+    if (PersistView.setViewState() === 'grid') {
+      setListView(!listView);
+      localStorage.setItem('activist_view_state', 'list')
+    } else {
+      setListView(!listView);
+      localStorage.setItem('activist_view_state', 'grid')
+    }
   };
 
   const triggerSelect = () => {
@@ -341,7 +363,8 @@ const Activists = ({ activists, fetchActivists, addActivist, singleActivist }) =
       </div>
       <div className="toggle-view-div">
         <div className="toggle-icons-div">
-          {listView ? (
+          {localStorage.activist_view_state === 'list' ? 
+          (
             <Grid onClick={handleView} size={30} className="grid-icon v-icon" />
           ) : (
             <List onClick={handleView} size={30} className="list-icon v-icon" />
@@ -350,7 +373,8 @@ const Activists = ({ activists, fetchActivists, addActivist, singleActivist }) =
       </div>
       <div className="activists-section">
         <div className="">
-          {!listView ? (
+          {localStorage.activist_view_state === 'grid' ?
+           (
             <div className="inner-div fixed-header">
               {activistsList &&
                 activistsList.map((activist, index) => {
