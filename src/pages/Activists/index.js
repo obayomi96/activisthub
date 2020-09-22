@@ -37,14 +37,9 @@ const Activists = ({ activists, fetchActivists, addActivist, singleActivist }) =
 
   useEffect(() => {
     if (PersistView.setViewState() === 'list') {
-      console.log('list view')
-      // setListView(!listView)
       localStorage.setItem('activist_view_state', 'list')
     } else {
-      console.log('grid view')
-      // setListView(!listView)
       localStorage.setItem('activist_view_state', 'grid')
-
     }
   }, [PersistView.setViewState()])
   
