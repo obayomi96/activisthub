@@ -272,6 +272,7 @@ const Activists = ({ activists, fetchActivists, addActivist, singleActivist }) =
                           placeholderText="Select activist date of birth"
                           name="dateOfBirth"
                           id="DatePicker"
+                          dateFormat="MMMM d, yyyy"
                           // value={values.dateOfBirth}
                           style={{
                             height: "55px",
